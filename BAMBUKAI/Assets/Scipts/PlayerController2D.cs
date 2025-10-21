@@ -29,8 +29,8 @@ public class PlayerController2D : MonoBehaviour
         rb.linearVelocity = new Vector2(x * moveSpeed, rb.linearVelocity.y);
 
         // Apvertimas pagal judėjimo kryptį
-        if (x > 0 && !facingRight) Flip();
-        else if (x < 0 && facingRight) Flip();
+        if (x < 0 && !facingRight) Flip();
+        else if (x > 0 && facingRight) Flip();
 
         // Šuolis (Space) – tik kai ant žemės
         if (Input.GetButtonDown("Jump") && IsGrounded())
