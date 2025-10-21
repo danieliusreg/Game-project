@@ -14,35 +14,49 @@ public class PlayerController2D : MonoBehaviour
     [SerializeField] LayerMask groundMask;        // Layer'iai, kurie laikomi žeme
 
     Rigidbody2D rb;
+    Animator anim;
     bool facingRight = true;
-    float lastAttackTime;
+    float inputX;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>(); // arba GetComponent<Animator>(), jei Animator ant to paties GO
     }
 
     void Update()
     {
-        // Horizontalus judėjimas (A/D arba rodyklės)
-        float x = Input.GetAxisRaw("Horizontal");
-        rb.linearVelocity = new Vector2(x * moveSpeed, rb.linearVelocity.y);
+        // Nuskaitom inputą (čia, kad nebūtų lagų su FixedUpdate)
+        inputX = Input.GetAxisRaw("Horizontal");
 
-        // Apvertimas pagal judėjimo kryptį
-        if (x < 0 && !facingRight) Flip();
-        else if (x > 0 && facingRight) Flip();
-
-        // Šuolis (Space) – tik kai ant žemės
+        // Šuolis (tik kai ant žemės)
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
-        
+
+        // Apvertimas pagal judėjimo kryptį
+        if (inputX < 0f && !facingRight) Flip();
+        else if (inputX > 0f && facingRight) Flip();
+
+        // --- ANIMACIJA ---
+        if (anim)
+        {
+            float speedAbs = Mathf.Abs(rb.linearVelocity.x);
+            anim.SetFloat("Speed", speedAbs);          // Idle/Run per „Speed“
+            anim.SetBool("Grounded", IsGrounded());    // jei prireiks šuolio/fall animacijom
+        }
+    }
+
+    void FixedUpdate()
+    {
+        // Judėjimas atliekamas per FixedUpdate, kad būtų sklandu
+        rb.linearVelocity = new Vector2(inputX * moveSpeed, rb.linearVelocity.y);
     }
 
     bool IsGrounded()
     {
-        // patikrina apskritimu po kojom
+        // Patikrina apskritimu po kojom
         return Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundMask);
     }
 
@@ -54,7 +68,6 @@ public class PlayerController2D : MonoBehaviour
         transform.localScale = s;
     }
 
-    // kad matytum „groundCheck“ gizmo scenoje
     void OnDrawGizmosSelected()
     {
         if (groundCheck == null) return;
