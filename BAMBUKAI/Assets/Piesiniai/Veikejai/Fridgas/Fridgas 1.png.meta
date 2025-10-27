@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2f6cd0f8a8905ad488c25c2575b036cd
+guid: 62671285857331143b2662a952131cf6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,29 +97,29 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fridgas_0
+      name: Fridgas 1_0
       rect:
         serializedVersion: 2
         x: 31
-        y: 646
+        y: 637
         width: 970
-        height: 1041
+        height: 1050
       alignment: 9
-      pivot: {x: 0.50947404, y: 0.034643285}
+      pivot: {x: 0.5169164, y: 0.04010684}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c901b02755bcef9468c0885cbfb55c41
-      internalID: 1543245436
+      spriteID: 84b778ba036500247986351b27513b39
+      internalID: -1394662767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fridgas_1
+      name: Fridgas 1_1
       rect:
         serializedVersion: 2
         x: 1259
@@ -134,18 +134,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 931bf0711008c7048a4b50111422c2ab
-      internalID: -1869596211
+      spriteID: ea60fbb5265ce084c98966fe8344031e
+      internalID: 328079968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fridgas_2
+      name: Fridgas 1_2
       rect:
         serializedVersion: 2
         x: 1571
-        y: 1491
+        y: 1493
         width: 111
         height: 147
       alignment: 0
@@ -156,14 +156,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a01cb5c930b1313459fcf8dbf664cdc6
-      internalID: -573742633
+      spriteID: 1b9877fad3cff024ea85acb3276d8dcf
+      internalID: -1893829276
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fridgas_3
+      name: Fridgas 1_3
       rect:
         serializedVersion: 2
         x: 1044
@@ -171,21 +171,21 @@ TextureImporter:
         width: 790
         height: 573
       alignment: 9
-      pivot: {x: 0.95866126, y: 0.5229115}
+      pivot: {x: 0.96882325, y: 0.5122731}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5fcbbc18438da34dbb4ae43428dd385
-      internalID: 2131928903
+      spriteID: 41f0b73e49d00804e9b1df2235c4a1f3
+      internalID: -1581496283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fridgas_6
+      name: Fridgas 1_6
       rect:
         serializedVersion: 2
         x: 123
@@ -193,21 +193,21 @@ TextureImporter:
         width: 219
         height: 544
       alignment: 9
-      pivot: {x: 0.7937395, y: 0.9464606}
+      pivot: {x: 0.7997048, y: 0.95244914}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b68490d6e458beb40b4ae9c4790a6093
-      internalID: -1012675218
+      spriteID: 125ea21b33c5d9346bb628a9736832ca
+      internalID: -1883953849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fridgas_7
+      name: Fridgas 1_7
       rect:
         serializedVersion: 2
         x: 708
@@ -215,43 +215,43 @@ TextureImporter:
         width: 228
         height: 205
       alignment: 9
-      pivot: {x: 0.4596938, y: 0.85222363}
+      pivot: {x: 0.50000054, y: 0.9002154}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9dc7fb75d08832940b98c11d3d8e12c7
-      internalID: -485477461
+      spriteID: 6cdb426ebf355e5499adf5e0baf8cbe9
+      internalID: -774018333
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fridgas_8
+      name: Fridgas 1_8
       rect:
         serializedVersion: 2
-        x: 1123
-        y: 118
+        x: 1125
+        y: 116
         width: 228
         height: 204
       alignment: 9
-      pivot: {x: 0.47696778, y: 0.886128}
+      pivot: {x: 0.46915635, y: 0.89068633}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8b6814d33dda4148908d6c33d34bc44
-      internalID: -2009989006
+      spriteID: 97b73a609a14d5c4abed9b942f4cf3f3
+      internalID: 475953436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fridgas_9
+      name: Fridgas 1_9
       rect:
         serializedVersion: 2
         x: 1538
@@ -259,15 +259,15 @@ TextureImporter:
         width: 219
         height: 544
       alignment: 9
-      pivot: {x: 0.17628682, y: 0.94887376}
+      pivot: {x: 0.16818503, y: 0.9481401}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1caf89ecadd4a1042af06c41131c8b16
-      internalID: -888945596
+      spriteID: 99423024a24c11648886ca8d9ccc9b8d
+      internalID: 1879770854
       vertices: []
       indices: 
       edges: []
@@ -276,7 +276,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 87f4a89eb138f2942beb73e997e03275
+    spriteID: 870a8e2181b62f54fa87682644c083cc
     internalID: 0
     vertices: []
     indices: 
@@ -286,16 +286,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fridgas_0: 1543245436
-      Fridgas_1: -1869596211
-      Fridgas_2: -573742633
-      Fridgas_3: 2131928903
-      Fridgas_4: 750866670
-      Fridgas_5: 1223197592
-      Fridgas_6: -1012675218
-      Fridgas_7: -485477461
-      Fridgas_8: -2009989006
-      Fridgas_9: -888945596
+      Fridgas 1_0: -1394662767
+      Fridgas 1_1: 328079968
+      Fridgas 1_2: -1893829276
+      Fridgas 1_3: -1581496283
+      Fridgas 1_4: 1316651725
+      Fridgas 1_5: 2146442122
+      Fridgas 1_6: -1883953849
+      Fridgas 1_7: -774018333
+      Fridgas 1_8: 475953436
+      Fridgas 1_9: 1879770854
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
