@@ -480,12 +480,12 @@ MonoBehaviour:
   buy2Btn: {fileID: 1277868096}
   buy3Btn: {fileID: 1055379923}
   closeBtn: {fileID: 1855485927}
-  item1Name: "Pirmoji prek\u0117"
-  item2Name: "Antroji prek\u0117"
-  item3Name: "Tre\u010Dioji prek\u0117"
+  item1Name: "Gyvyb\u0117s"
+  item2Name: Stiprumas
+  item3Name: Greitis
   item1Price: 50
-  item2Price: 75
-  item3Price: 120
+  item2Price: 65
+  item3Price: 35
 --- !u!1 &83383733
 GameObject:
   m_ObjectHideFlags: 0
@@ -2569,7 +2569,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c6a6c42ca53e1504ba4e6c158c92d2cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3288,7 +3288,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 16d0a9eb22a8e944a8a16be82ce38755, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4240,7 +4240,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 93c37726cc41b18439a3acd57b8c478d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
