@@ -54,7 +54,7 @@ public class ShopUI : MonoBehaviour
     {
         if (!inv) inv = FindObjectOfType<PlayerInventory>();
 
-        coinsText.text = $"Monetos: {inv.coins}";
+        coinsText.text = $"Varžtai: {inv.coins}";
         item1Text.text = $"{item1Name} – {item1Price}";
         item2Text.text = $"{item2Name} – {item2Price}";
         item3Text.text = $"{item3Name} – {item3Price}";
