@@ -187,8 +187,13 @@ MonoBehaviour:
       m_Sprite: {fileID: -643214222, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: -643214222, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    - m_Name: Atakuoti
+      m_Hash: 355453500
+      m_Sprite: {fileID: 1258933550, guid: 273aa4c37d3e73b46888d9771149296a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1258933550, guid: 273aa4c37d3e73b46888d9771149296a, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 2
+    m_EntryOverrideCount: 3
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 638983050471889261
+  m_ModificationHash: 638984158339868478
   m_Version: 1

@@ -9,69 +9,100 @@ public class PlayerController2D : MonoBehaviour
     [SerializeField] float jumpForce = 12f;
 
     [Header("Ground Check")]
-    [SerializeField] Transform groundCheck;       // tuščias objektas po kojom
-    [SerializeField] float groundRadius = 0.12f;  // apskritimo spindulys
-    [SerializeField] LayerMask groundMask;        // Layer'iai, kurie laikomi žeme
+    [SerializeField] Transform groundCheck;
+    [SerializeField] float groundRadius = 0.12f;
+    [SerializeField] LayerMask groundMask;
 
     Rigidbody2D rb;
     Animator anim;
+
     bool facingRight = true;
     float inputX;
+
+    bool isAttacking = false;
+    RigidbodyConstraints2D defaultConstraints;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>(); // arba GetComponent<Animator>(), jei Animator ant to paties GO
+        anim = GetComponentInChildren<Animator>();
+        defaultConstraints = rb.constraints;                     // pasiimam pradinius
     }
 
     void Update()
     {
-        // Nuskaitom inputą (čia, kad nebūtų lagų su FixedUpdate)
-        inputX = Input.GetAxisRaw("Horizontal");
-
-        // Šuolis (tik kai ant žemės)
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        // Startuojam ataką tik jei dabar ne ataka
+        if (!isAttacking && Input.GetButtonDown("Fire1"))
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            anim.ResetTrigger("Attack");
+            anim.SetTrigger("Attack");
         }
 
-        // Apvertimas pagal judėjimo kryptį
+        // Neskaitom horizontalios krypties kai atakuojam
+        inputX = isAttacking ? 0f : Input.GetAxisRaw("Horizontal");
+
+        // Šuolis tik jei ne ataka
+        if (!isAttacking && Input.GetButtonDown("Jump") && IsGrounded())
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
+        // Apvertimas
         if (inputX < 0f && !facingRight) Flip();
         else if (inputX > 0f && facingRight) Flip();
 
-        // --- ANIMACIJA ---
-        if (anim)
-        {
-            float speedAbs = Mathf.Abs(rb.linearVelocity.x);
-            anim.SetFloat("Speed", speedAbs);          // Idle/Run per „Speed“
-            anim.SetBool("Grounded", IsGrounded());    // jei prireiks šuolio/fall animacijom
-        }
+        // Animator parametrai
+        float speedAbs = Mathf.Abs(rb.linearVelocity.x);
+        anim.SetFloat("Speed", speedAbs);
+        anim.SetBool("Grounded", IsGrounded());
     }
 
     void FixedUpdate()
     {
-        // Judėjimas atliekamas per FixedUpdate, kad būtų sklandu
+        if (isAttacking)
+        {
+            // Sustabdom slydimą
+            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+            return;
+        }
+
+        // Įprastas judėjimas
         rb.linearVelocity = new Vector2(inputX * moveSpeed, rb.linearVelocity.y);
     }
 
     bool IsGrounded()
     {
-        // Patikrina apskritimu po kojom
         return Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundMask);
     }
 
     void Flip()
     {
         facingRight = !facingRight;
-        Vector3 s = transform.localScale;
+        var s = transform.localScale;
         s.x *= -1f;
         transform.localScale = s;
     }
 
     void OnDrawGizmosSelected()
     {
-        if (groundCheck == null) return;
+        if (!groundCheck) return;
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
+    }
+
+    // ==== Animation Events (kviečiami iš "Atakuoti" klipo) ====
+
+    // Kviečiam pirmame klipo frame
+    public void AttackStart()
+    {
+        isAttacking = true;
+        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+        // visiškai užrakina slinkimą per ataką:
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+    }
+
+    // Kviečiam paskutiniame klipo frame
+    public void AttackEnd()
+    {
+        isAttacking = false;
+        rb.constraints = defaultConstraints;  // grąžinam kaip buvo
     }
 }
