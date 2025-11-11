@@ -1,0 +1,199 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Galva
+    m_Hash: 762732248
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Begti
+      m_Hash: 441205678
+      m_Sprite: {fileID: -959795542, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -959795542, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    - m_Name: Stoveti
+      m_Hash: 1005916314
+      m_Sprite: {fileID: -959795542, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -959795542, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Akis_d
+    m_Hash: 1010938988
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Begti
+      m_Hash: 441205678
+      m_Sprite: {fileID: 866975630, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 866975630, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    - m_Name: Stoveti
+      m_Hash: 1005916314
+      m_Sprite: {fileID: 866975630, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 866975630, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Akis_k
+    m_Hash: 754887165
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Begti
+      m_Hash: 441205678
+      m_Sprite: {fileID: -313613121, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -313613121, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    - m_Name: Stoveti
+      m_Hash: 1005916314
+      m_Sprite: {fileID: -313613121, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -313613121, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Apsiaustas_apc
+    m_Hash: 762893045
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Begti
+      m_Hash: 441205678
+      m_Sprite: {fileID: 2034354978, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2034354978, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    - m_Name: Stoveti
+      m_Hash: 1005916314
+      m_Sprite: {fileID: 2034354978, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2034354978, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Apsiaustas_vir
+    m_Hash: 94498538
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Begti
+      m_Hash: 441205678
+      m_Sprite: {fileID: -1761149557, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1761149557, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    - m_Name: Stoveti
+      m_Hash: 1005916314
+      m_Sprite: {fileID: -1761149557, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1761149557, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Kunas
+    m_Hash: 37966497
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Begti
+      m_Hash: 441205678
+      m_Sprite: {fileID: -279982709, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -279982709, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    - m_Name: Stoveti
+      m_Hash: 1005916314
+      m_Sprite: {fileID: -279982709, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -279982709, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Ranka_d
+    m_Hash: 507643900
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Begti
+      m_Hash: 441205678
+      m_Sprite: {fileID: -273686590, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -273686590, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    - m_Name: Stoveti
+      m_Hash: 1005916314
+      m_Sprite: {fileID: -273686590, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -273686590, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Ranka_k
+    m_Hash: 251468397
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Begti
+      m_Hash: 441205678
+      m_Sprite: {fileID: 1858740833, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1858740833, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    - m_Name: Stoveti
+      m_Hash: 1005916314
+      m_Sprite: {fileID: 1858740833, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1858740833, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Koja_d
+    m_Hash: 625862970
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Begti
+      m_Hash: 441205678
+      m_Sprite: {fileID: 1073724291, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1073724291, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    - m_Name: Stoveti
+      m_Hash: 1005916314
+      m_Sprite: {fileID: -480426678, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -480426678, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Koja_k
+    m_Hash: 905114795
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Begti
+      m_Hash: 441205678
+      m_Sprite: {fileID: -1652533496, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1652533496, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    - m_Name: Stoveti
+      m_Hash: 1005916314
+      m_Sprite: {fileID: -1652533496, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1652533496, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Ginklas
+    m_Hash: 221854481
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Begti
+      m_Hash: 441205678
+      m_Sprite: {fileID: -643214222, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -643214222, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    - m_Name: Stoveti
+      m_Hash: 1005916314
+      m_Sprite: {fileID: -643214222, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -643214222, guid: 8b0f39cf07d5af844a0780cfc05c07b9, type: 3}
+    - m_Name: Atakuoti
+      m_Hash: 355453500
+      m_Sprite: {fileID: 1258933550, guid: 273aa4c37d3e73b46888d9771149296a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1258933550, guid: 273aa4c37d3e73b46888d9771149296a, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 3
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638984158339868478
+  m_Version: 1
