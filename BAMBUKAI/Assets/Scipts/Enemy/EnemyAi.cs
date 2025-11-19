@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyAi : MonoBehaviour
 {
     public EnemyState currentState;
@@ -20,9 +21,14 @@ public class EnemyAi : MonoBehaviour
     private float idleTimer;
 
     private Animator anim;
+    private Rigidbody2D rb;
+
+    public EnemyHitbox hitbox;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation; // prevents tipping
         currentState = EnemyState.Patrol;
         patrolTarget = pointB;
         anim = GetComponent<Animator>();
@@ -73,6 +79,10 @@ public class EnemyAi : MonoBehaviour
 
         if (newState == EnemyState.Idle)
             idleTimer = idleDuration;
+
+        // Stop horizontal movement when switching states
+        if (newState == EnemyState.Idle || newState == EnemyState.Attack)
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
     }
 
     // -----------------------
@@ -81,9 +91,10 @@ public class EnemyAi : MonoBehaviour
 
     void Idle()
     {
-        anim.SetFloat("Speed",0);
+        anim.SetFloat("Speed", 0);
         anim.SetBool("IsChasing", false);
         anim.SetBool("IsAttacking", false);
+
         idleTimer -= Time.deltaTime;
         if (idleTimer <= 0)
         {
@@ -96,18 +107,14 @@ public class EnemyAi : MonoBehaviour
         anim.SetBool("IsChasing", false);
         anim.SetBool("IsAttacking", false);
 
-        float move = patrolSpeed;
-        anim.SetFloat("Speed", Mathf.Abs(move));
+        Vector2 direction = (patrolTarget.position - transform.position).normalized;
+        rb.linearVelocity = new Vector2(direction.x * patrolSpeed, rb.linearVelocity.y);
 
-        transform.position = Vector2.MoveTowards(
-            transform.position,
-            patrolTarget.position,
-            patrolSpeed * Time.deltaTime);
+        anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
 
         if (Vector2.Distance(transform.position, patrolTarget.position) < 0.2f)
         {
             ChangeState(EnemyState.Idle);
-
             patrolTarget = (patrolTarget == pointA) ? pointB : pointA;
         }
 
@@ -118,14 +125,11 @@ public class EnemyAi : MonoBehaviour
     {
         anim.SetBool("IsChasing", true);
         anim.SetBool("IsAttacking", false);
-        
-        float move = chaseSpeed;
-        anim.SetFloat("Speed", Mathf .Abs(move));
 
-        transform.position = Vector2.MoveTowards(
-            transform.position,
-            player.position,
-            chaseSpeed * Time.deltaTime);
+        Vector2 direction = (player.position - transform.position).normalized;
+        rb.linearVelocity = new Vector2(direction.x * chaseSpeed, rb.linearVelocity.y);
+
+        anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
 
         FlipSprite(player.position);
     }
@@ -135,11 +139,30 @@ public class EnemyAi : MonoBehaviour
         anim.SetBool("IsChasing", false);
         anim.SetBool("IsAttacking", true);
         anim.SetFloat("Speed", 0);
-        // Attack animation/event here
-        Debug.Log("Enemy attacks!");
+        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // stop horizontal movement during attack
 
-        // Keep facing the player  
+
         FlipSprite(player.position);
+    }
+
+    // This method should be called via an **Animation Event** in the attack animation
+    public void PerformAttackHit()
+    {
+        if (hitbox != null)
+            hitbox.DoHit();
+
+        Debug.Log("Enemy hits the player!");
+    }
+
+    public void EndAttack()
+    {
+        anim.SetBool("IsAttacking", false);
+
+        float distToPlayer = Vector2.Distance(transform.position, player.position);
+        if (distToPlayer < detectionRange)
+            ChangeState(EnemyState.Chase);
+        else
+            ChangeState(EnemyState.Patrol);
     }
 
     // -----------------------
@@ -154,11 +177,12 @@ public class EnemyAi : MonoBehaviour
     }
 
     private void OnDrawGizmos()
-    {   
+    {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
+
 }

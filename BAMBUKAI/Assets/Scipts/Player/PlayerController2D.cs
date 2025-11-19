@@ -23,6 +23,7 @@ public class PlayerController2D : MonoBehaviour
     bool isPreparingJump = false;     // <-- NAUJA: ar vyksta „pritūpimo“ fazė
 
     RigidbodyConstraints2D defaultConstraints;
+    public Collider2D attackHitBox;
 
     void Awake()
     {
@@ -114,6 +115,8 @@ public class PlayerController2D : MonoBehaviour
         isAttacking = true;
         rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
         rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+
+        attackHitBox.GetComponent<SwordHitbox>().DoHit();
     }
 
     public void AttackEnd()
@@ -121,4 +124,5 @@ public class PlayerController2D : MonoBehaviour
         isAttacking = false;
         rb.constraints = defaultConstraints;
     }
+    
 }
