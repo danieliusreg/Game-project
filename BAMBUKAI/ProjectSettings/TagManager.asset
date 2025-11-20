@@ -44,11 +44,11 @@ TagManager:
   - name: Background
     uniqueID: 2309171751
     locked: 0
-  - name: Midground
-    uniqueID: 3208632629
-    locked: 0
   - name: Foreground
     uniqueID: 575837555
+    locked: 0
+  - name: Midground
+    uniqueID: 3208632629
     locked: 0
   - name: NPC
     uniqueID: 3379382649
