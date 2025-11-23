@@ -24,6 +24,8 @@ public class EnemyAi : MonoBehaviour
     private Rigidbody2D rb;
 
     public EnemyHitbox hitbox;
+    private EnemyHealth health;
+
 
     void Start()
     {
@@ -32,10 +34,22 @@ public class EnemyAi : MonoBehaviour
         currentState = EnemyState.Patrol;
         patrolTarget = pointB;
         anim = GetComponent<Animator>();
+        health = GetComponent<EnemyHealth>();
+
     }
 
     void Update()
     {
+
+        if (health != null && health.isDying)
+        {
+            rb.linearVelocity = Vector2.zero;   // stop movement
+
+            anim.SetFloat("Speed", 0);
+            anim.SetBool("IsChasing", false);
+            anim.SetBool("IsAttacking", false);
+            return; // <-- STOPS ALL AI
+        }
         float distToPlayer = Vector2.Distance(transform.position, player.position);
 
         // Global transitions
