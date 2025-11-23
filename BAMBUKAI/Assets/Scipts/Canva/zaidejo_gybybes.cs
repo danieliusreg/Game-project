@@ -18,11 +18,22 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = Mathf.Max(0, currentHealth - amount);
         OnHealthPctChanged?.Invoke((float)currentHealth / maxHealth);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
     public void Heal(int amount)
     {
         currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
         OnHealthPctChanged?.Invoke((float)currentHealth / maxHealth);
+    }
+
+    private void Die()
+    {
+        Debug.Log(gameObject.name + " died!");
+        //Destroy(gameObject);
     }
 }
