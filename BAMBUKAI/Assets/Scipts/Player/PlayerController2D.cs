@@ -13,6 +13,12 @@ public class PlayerController2D : MonoBehaviour
     [SerializeField] float groundRadius = 0.12f;
     [SerializeField] LayerMask groundMask;
 
+    [Header("Attack")]
+    public Collider2D attackHitBox;
+
+    [Header("Shield")]
+    public bool canBlock = true;    // jei kada nors norėsi išjungti skydą
+
     Rigidbody2D rb;
     Animator anim;
 
@@ -20,10 +26,10 @@ public class PlayerController2D : MonoBehaviour
     float inputX;
 
     bool isAttacking = false;
-    bool isPreparingJump = false;     // <-- NAUJA: ar vyksta „pritūpimo“ fazė
+    bool isPreparingJump = false;
+    bool isBlocking = false;        // <-- nauja būsena
 
     RigidbodyConstraints2D defaultConstraints;
-    public Collider2D attackHitBox;
 
     void Awake()
     {
@@ -34,25 +40,48 @@ public class PlayerController2D : MonoBehaviour
 
     void Update()
     {
-        // ATAKA – tik ant žemės ir kai ne šuolis
-        if (!isAttacking && !isPreparingJump && IsGrounded() && Input.GetButtonDown("Fire1"))
+        bool grounded = IsGrounded();
+
+        // --- SKYDAS ---
+
+        bool canUseShield = canBlock && !isAttacking && !isPreparingJump;
+
+        if (canUseShield)
+        {
+            // dešinys pelės mygtukas (Input sistemoje – "Fire2")
+            if (Input.GetButtonDown("Fire2"))
+            {
+                isBlocking = true;
+                anim.SetBool("Blocking", true);
+            }
+
+            if (Input.GetButtonUp("Fire2"))
+            {
+                isBlocking = false;
+                anim.SetBool("Blocking", false);
+            }
+        }
+
+        // --- ATAKA --- (negalima kai laikomas skydas)
+        if (!isAttacking && !isPreparingJump && !isBlocking && grounded && Input.GetButtonDown("Fire1"))
         {
             anim.ResetTrigger("Attack");
             anim.SetTrigger("Attack");
         }
 
-        // ŠUOLIO PRADŽIA – pritūpimas
-        if (!isAttacking && !isPreparingJump && IsGrounded() && Input.GetButtonDown("Jump"))
+        // --- ŠUOLIO PRADŽIA (pritūpimas) --- (irgi ne per skydą)
+        if (!isAttacking && !isPreparingJump && !isBlocking && grounded && Input.GetButtonDown("Jump"))
         {
-            isPreparingJump = true;                               // užrakinam judėjimą
-            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y); // nuimam slydimą
-            anim.SetTrigger("Jump");                             // pereinam į Pasokimas_pradeti
+            isPreparingJump = true;
+            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+            anim.SetTrigger("Jump");               // Pasokimas_pradeti
         }
 
-        // Horizontalus inputas – išjungiam jei ataka ARBA pritūpimas
-        inputX = (isAttacking || isPreparingJump)
-            ? 0f
-            : Input.GetAxisRaw("Horizontal");
+        // Horizontalus inputas – išjungiam jei ataka, pritūpimas ARBA skydas
+        if (isAttacking || isPreparingJump || isBlocking)
+            inputX = 0f;
+        else
+            inputX = Input.GetAxisRaw("Horizontal");
 
         // Flip
         if (inputX < 0f && !facingRight) Flip();
@@ -61,7 +90,7 @@ public class PlayerController2D : MonoBehaviour
         // Animator parametrai
         float speedAbs = Mathf.Abs(rb.linearVelocity.x);
         anim.SetFloat("Speed", speedAbs);
-        anim.SetBool("Grounded", IsGrounded());
+        anim.SetBool("Grounded", grounded);
     }
 
     void FixedUpdate()
@@ -72,8 +101,7 @@ public class PlayerController2D : MonoBehaviour
             return;
         }
 
-        // Įprastas judėjimas – BET tik jei ne pritūpimo fazė,
-        // nes inputX jau bus 0, jei isPreparingJump == true
+        // Įprastas judėjimas (kai ne pritūpimas ir ne skydas, inputX jau bus 0)
         rb.linearVelocity = new Vector2(inputX * moveSpeed, rb.linearVelocity.y);
     }
 
@@ -99,24 +127,21 @@ public class PlayerController2D : MonoBehaviour
 
     // ==== Animation Events ====
 
-    // Kviečiama iš Pasokimas_pradeti paskutinio frame (event "DoJump")
+    // kviečiama iš Pasokimas_pradeti paskutinio frame (event "DoJump")
     public void DoJump()
     {
-        // Pridedam vertikalų šuolio greitį
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-
-        // Baigėsi pritūpimo fazė – ore vėl galima judėti
         isPreparingJump = false;
     }
 
-    // Atakos pradžia – kaip buvo
     public void AttackStart()
     {
         isAttacking = true;
         rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
         rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
 
-        attackHitBox.GetComponent<SwordHitbox>().DoHit();
+        if (attackHitBox != null)
+            attackHitBox.GetComponent<SwordHitbox>().DoHit();
     }
 
     public void AttackEnd()
@@ -124,5 +149,4 @@ public class PlayerController2D : MonoBehaviour
         isAttacking = false;
         rb.constraints = defaultConstraints;
     }
-    
 }
