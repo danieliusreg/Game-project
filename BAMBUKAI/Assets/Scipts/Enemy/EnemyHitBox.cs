@@ -9,18 +9,29 @@ public class EnemyHitbox : MonoBehaviour
     public Vector2 hitSize = new Vector2(1.2f, 0.8f);
 
     public void DoHit()
-    {
-        Collider2D[] hits = Physics2D.OverlapBoxAll(hitPoint.position, hitSize, 0f, playerMask);
+{
+    Collider2D[] hits = Physics2D.OverlapBoxAll(hitPoint.position, hitSize, 0f, playerMask);
 
-        foreach (var hit in hits)
+    foreach (var hit in hits)
+    {
+        PlayerHealth player = hit.GetComponent<PlayerHealth>();
+        if (player != null)
         {
-            PlayerHealth player = hit.GetComponent<PlayerHealth>();
-            if (player != null)
+            // Pasiimam žaidėjo controllerį, kad patikrintume skydą
+            PlayerController2D controller = hit.GetComponent<PlayerController2D>();
+
+            if (controller != null && controller.isBlocking)
             {
-                player.TakeDamage(damage);
+                // Čia smūgis užblokuotas – damage NEINA
+                Debug.Log("Žaidėjas užblokavo smūgį skydų!");
+                continue; // peršokam į kitą colliderį
             }
+
+            // Jei neblokuoja – gaunam damage
+            player.TakeDamage(damage);
         }
     }
+}
 
     private void OnDrawGizmosSelected()
     {

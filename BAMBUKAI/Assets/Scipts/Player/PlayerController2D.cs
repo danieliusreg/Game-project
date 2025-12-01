@@ -27,7 +27,7 @@ public class PlayerController2D : MonoBehaviour
 
     bool isAttacking = false;
     bool isPreparingJump = false;
-    bool isBlocking = false;        // <-- nauja būsena
+    public bool isBlocking = false;        // <-- nauja būsena
 
     RigidbodyConstraints2D defaultConstraints;
 
